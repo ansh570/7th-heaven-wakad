@@ -1,0 +1,386 @@
+/* ==============================================================================
+   7th Heaven Wakad - Owner Dashboard Styling
+   Full Management Suite: Products, Prices, Upload Our Work, Reviews, Orders
+   ============================================================================== */
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #0d0806;
+}
+
+/* Sidebar */
+.admin-sidebar {
+  width: 270px;
+  background: #140d0a;
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  transition: transform var(--transition-normal);
+}
+
+.admin-sidebar-header {
+  padding: 1.8rem 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.admin-nav-list {
+  list-style: none;
+  padding: 1.2rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.admin-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.75rem 1.1rem;
+  border-radius: var(--radius-sm);
+  color: var(--cream-muted);
+  font-size: 0.94rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.admin-nav-item:hover {
+  background: rgba(223, 168, 95, 0.1);
+  color: var(--gold-200);
+}
+
+.admin-nav-item.active {
+  background: var(--gold-gradient);
+  color: #170d07;
+  font-weight: 700;
+  box-shadow: 0 4px 15px var(--gold-glow);
+}
+
+.admin-nav-item .nav-icon {
+  font-size: 1.15rem;
+  width: 22px;
+  text-align: center;
+}
+
+.admin-sidebar-footer {
+  padding: 1.2rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* Main Content Area */
+.admin-main {
+  margin-left: 270px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.admin-topbar {
+  background: rgba(20, 13, 10, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
+
+.admin-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--gold-300);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.admin-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.store-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(37, 211, 102, 0.15);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  color: #25D366;
+  border-radius: var(--radius-full);
+}
+
+.admin-body {
+  padding: 2.5rem;
+  flex-grow: 1;
+}
+
+/* Tab Panels */
+.admin-panel {
+  display: none;
+}
+
+.admin-panel.active {
+  display: block;
+  animation: heroFadeIn 0.4s var(--ease-out);
+}
+
+/* Analytics Metric Cards */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.metric-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.metric-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  background: rgba(223, 168, 95, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: var(--gold-300);
+}
+
+.metric-val {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--cream-100);
+  line-height: 1.1;
+}
+
+.metric-label {
+  font-size: 0.82rem;
+  color: var(--cream-muted);
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+}
+
+/* Tables */
+.admin-table-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2rem;
+}
+
+.table-header-row {
+  padding: 1.4rem 1.8rem;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.admin-table th {
+  padding: 1rem 1.4rem;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 0.82rem;
+  color: var(--gold-300);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.admin-table td {
+  padding: 1rem 1.4rem;
+  border-bottom: 1px solid rgba(223, 168, 95, 0.08);
+  font-size: 0.92rem;
+  color: var(--cream-200);
+  vertical-align: middle;
+}
+
+.admin-table tr:hover {
+  background: rgba(223, 168, 95, 0.04);
+}
+
+.table-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+/* Status Badges */
+.status-pill {
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.status-new { background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+.status-confirmed { background: rgba(223, 168, 95, 0.2); color: var(--gold-300); border: 1px solid var(--border-subtle); }
+.status-preparing { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+.status-ready { background: rgba(37, 211, 102, 0.2); color: #25D366; border: 1px solid rgba(37, 211, 102, 0.3); }
+.status-completed { background: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+.status-cancelled { background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+
+/* Quick Price Matrix Table */
+.price-input-sm {
+  width: 110px !important;
+  padding: 0.4rem 0.6rem !important;
+  font-size: 0.9rem !important;
+}
+
+/* Work Upload Dropzone Card */
+.upload-work-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-active);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Login Modal */
+.login-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 6, 4, 0.94);
+  backdrop-filter: blur(20px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.login-card {
+  max-width: 440px;
+  width: 100%;
+  background: #19100c;
+  border: 1px solid var(--border-active);
+  border-radius: var(--radius-xl);
+  padding: 3rem 2.5rem;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(223, 168, 95, 0.15);
+}
+
+.login-logo {
+  height: 52px;
+  margin: 0 auto 1.5rem;
+}
+
+/* Mobile responsiveness for Admin */
+@media (max-width: 900px) {
+  .admin-sidebar {
+    transform: translateX(-100%);
+  }
+
+  .admin-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .admin-main {
+    margin-left: 0;
+  }
+
+  .admin-mobile-toggle {
+    display: block;
+  }
+
+  .admin-body {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Image preset cards & table thumbnails */
+.preset-thumb-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  width: 92px;
+}
+
+.preset-thumb-card:hover {
+  border-color: var(--gold-300);
+  background: rgba(223, 168, 95, 0.15);
+  transform: translateY(-2px);
+}
+
+.preset-thumb-img {
+  width: 78px;
+  height: 60px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.preset-thumb-label {
+  font-size: 0.72rem;
+  color: var(--cream-muted);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80px;
+}
+
+.table-img-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid var(--border-subtle);
+}
+

@@ -1,0 +1,895 @@
+/* ==============================================================================
+   7th Heaven Wakad - Components Styling
+   Cards, Modals, Lightbox, Forms, Customizer, Gallery & Reviews
+   ============================================================================== */
+
+/* ==============================================================================
+   1. Product & Cake Cards
+   ============================================================================== */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.product-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-active);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 25px rgba(223, 168, 95, 0.15);
+  background: var(--bg-card-hover);
+}
+
+.product-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background: #19100c;
+}
+
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.product-card:hover .product-img {
+  transform: scale(1.08);
+}
+
+.product-badge-wrap {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  z-index: 2;
+}
+
+.badge-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+}
+
+.badge-bestseller {
+  background: var(--gold-gradient);
+  color: #170d07;
+  box-shadow: 0 4px 12px rgba(223, 168, 95, 0.35);
+}
+
+.badge-veg {
+  background: rgba(37, 211, 102, 0.9);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.veg-icon {
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid #ffffff;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.veg-icon::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.product-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-category {
+  font-size: 0.78rem;
+  color: var(--gold-300);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.product-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.6rem;
+  color: var(--cream-100);
+  line-height: 1.35;
+}
+
+.product-desc {
+  font-size: 0.9rem;
+  color: var(--cream-muted);
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.product-price-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-label {
+  font-size: 0.72rem;
+  color: var(--cream-muted);
+  text-transform: uppercase;
+}
+
+.product-price {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--gold-200);
+}
+
+.product-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-card-order {
+  padding: 0.55rem 1.1rem;
+  font-size: 0.86rem;
+}
+
+/* ==============================================================================
+   2. Category Filter Pills
+   ============================================================================== */
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 3rem;
+}
+
+.filter-btn {
+  padding: 0.6rem 1.4rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  color: var(--cream-300);
+  font-size: 0.92rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover {
+  background: rgba(223, 168, 95, 0.1);
+  border-color: var(--gold-400);
+  color: var(--gold-200);
+}
+
+.filter-btn.active {
+  background: var(--gold-gradient);
+  color: #170d07;
+  font-weight: 700;
+  border-color: transparent;
+  box-shadow: 0 4px 15px var(--gold-glow);
+}
+
+/* ==============================================================================
+   3. Our Work / Gallery Masonry & Lightbox
+   ============================================================================== */
+.gallery-grid {
+  columns: 3 320px;
+  column-gap: 1.8rem;
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 1.8rem;
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #1a110d;
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  transition: transform var(--transition-normal), border-color var(--transition-normal);
+}
+
+.gallery-item:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-active);
+}
+
+.gallery-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.gallery-item:hover .gallery-img {
+  transform: scale(1.05);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(12, 8, 6, 0.92) 0%, rgba(12, 8, 6, 0.3) 60%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-category {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--gold-300);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.3rem;
+}
+
+.gallery-title {
+  font-size: 1.15rem;
+  color: var(--cream-100);
+  margin-bottom: 0.3rem;
+}
+
+.gallery-date {
+  font-size: 0.78rem;
+  color: var(--cream-muted);
+}
+
+/* Fullscreen Lightbox */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 5, 4, 0.95);
+  backdrop-filter: blur(20px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal);
+}
+
+.lightbox-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 900px;
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-active);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+}
+
+.lightbox-img-wrap {
+  width: 100%;
+  max-height: 70vh;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+}
+
+.lightbox-details {
+  padding: 1.5rem 2rem;
+  background: var(--bg-surface);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border-subtle);
+  color: #fff;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background var(--transition-fast);
+}
+
+.lightbox-close:hover {
+  background: var(--ruby-500);
+}
+
+/* ==============================================================================
+   4. Customer Reviews & Carousel
+   ============================================================================== */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.review-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 2.2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.review-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-active);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 20px rgba(223, 168, 95, 0.1);
+}
+
+.review-stars {
+  color: #ffbc00;
+  font-size: 1.2rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.review-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--cream-200);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.review-footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.review-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  color: #170d07;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.review-author-name {
+  font-weight: 700;
+  color: var(--cream-100);
+  font-size: 0.98rem;
+}
+
+.review-author-locality {
+  font-size: 0.8rem;
+  color: var(--cream-muted);
+}
+
+.review-cake-badge {
+  margin-top: 0.6rem;
+  font-size: 0.76rem;
+  color: var(--gold-300);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* ==============================================================================
+   5. Interactive Cake Customizer (Cakes Page)
+   ============================================================================== */
+.cake-builder-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 3.5rem;
+  align-items: start;
+  background: var(--bg-card);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--border-active);
+  border-radius: var(--radius-xl);
+  padding: 3rem;
+  box-shadow: var(--glass-shadow);
+}
+
+.builder-preview-card {
+  position: sticky;
+  top: 100px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  padding: 2rem;
+  text-align: center;
+}
+
+.builder-img-wrap {
+  width: 100%;
+  height: 340px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+.builder-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.builder-total-price {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--gold-200);
+  margin-top: 0.5rem;
+}
+
+.builder-pills-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+}
+
+.builder-pill {
+  padding: 0.65rem 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  color: var(--cream-200);
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.builder-pill:hover {
+  border-color: var(--gold-400);
+}
+
+.builder-pill.active {
+  background: var(--gold-gradient);
+  color: #170d07;
+  font-weight: 700;
+  border-color: transparent;
+  box-shadow: 0 4px 15px var(--gold-glow);
+}
+
+/* ==============================================================================
+   6. Custom Cake Enquiry Form & Drag-and-Drop
+   ============================================================================== */
+.enquiry-form-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-active);
+  border-radius: var(--radius-xl);
+  padding: 3.5rem 3rem;
+  box-shadow: var(--glass-shadow);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--cream-200);
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  background: rgba(18, 11, 8, 0.85);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--cream-100);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--gold-300);
+  box-shadow: 0 0 0 3px rgba(223, 168, 95, 0.2);
+}
+
+/* File Upload Dropzone */
+.file-dropzone {
+  border: 2px dashed var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 2.2rem 1.5rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.file-dropzone:hover, .file-dropzone.dragover {
+  border-color: var(--gold-300);
+  background: rgba(223, 168, 95, 0.05);
+}
+
+.dropzone-icon {
+  font-size: 2.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.file-preview-wrap {
+  display: none;
+  margin-top: 1rem;
+  position: relative;
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border-active);
+}
+
+.file-preview-wrap img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.file-remove-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==============================================================================
+   7. WhatsApp Order Modal & Dialogs
+   ============================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 6, 4, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 2100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal);
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-dialog {
+  background: #19100c;
+  border: 1px solid var(--border-active);
+  border-radius: var(--radius-xl);
+  max-width: 640px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(223, 168, 95, 0.15);
+}
+
+.modal-header {
+  padding: 1.8rem 2rem 1.2rem;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.modal-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #25D366;
+  margin-bottom: 0.3rem;
+}
+
+.modal-title {
+  font-size: 1.4rem;
+  color: var(--cream-100);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--cream-muted);
+  cursor: pointer;
+  line-height: 1;
+  transition: color var(--transition-fast);
+}
+
+.modal-close:hover {
+  color: var(--ruby-500);
+}
+
+.modal-body {
+  padding: 1.8rem 2rem 2.2rem;
+}
+
+.order-preview-box {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.8rem;
+}
+
+.order-thumb {
+  width: 70px;
+  height: 70px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+.order-summary-price {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--gold-200);
+}
+
+.order-summary-note {
+  font-size: 0.8rem;
+  color: var(--cream-muted);
+  margin: 0;
+}
+
+.message-preview-container {
+  margin-top: 1.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.preview-label {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--gold-300);
+  margin-bottom: 0.5rem;
+}
+
+.preview-textarea {
+  font-family: monospace;
+  font-size: 0.84rem;
+  background: #0f0a07;
+  color: #d6e2cf;
+  border-color: rgba(37, 211, 102, 0.3);
+}
+
+.modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.8rem;
+}
+
+.btn-whatsapp-order {
+  background: #25D366;
+  color: #fff;
+  font-weight: 700;
+  padding: 0.85rem 1.8rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-whatsapp-order:hover {
+  background: #20bd5a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+}
+
+/* ==============================================================================
+   8. Offers Cards & Flash Badges
+   ============================================================================== */
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 2.2rem;
+}
+
+.offer-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+}
+
+.offer-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold-400);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+.offer-ribbon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--ruby-500);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.35rem 0.9rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 12px var(--ruby-glow);
+  z-index: 2;
+}
+
+.offer-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.offer-body {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.offer-promo-code {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(223, 168, 95, 0.12);
+  border: 1px dashed var(--gold-400);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  color: var(--gold-200);
+  font-family: monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  align-self: flex-start;
+}
+
+/* Responsive adjustments */
+@media (max-width: 860px) {
+  .cake-builder-grid {
+    grid-template-columns: 1fr;
+    padding: 1.8rem;
+  }
+
+  .builder-preview-card {
+    position: static;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .enquiry-form-card {
+    padding: 2rem 1.5rem;
+  }
+}
