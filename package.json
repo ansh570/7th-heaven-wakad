@@ -1,0 +1,9 @@
+{
+  "name": "7th-heaven-wakad",
+  "version": "1.0.0",
+  "private": true,
+  "description": "7th Heaven Wakad - The Cake Shop",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

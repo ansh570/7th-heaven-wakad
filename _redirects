@@ -1,0 +1,14 @@
+# Netlify Clean URL Redirects & Rewrites for 7th Heaven Wakad
+/admin              /admin.html         200
+/menu               /menu.html          200
+/cakes              /cakes.html         200
+/custom-cakes       /custom-cakes.html  200
+/pastries           /pastries.html      200
+/offers             /offers.html        200
+/gallery            /gallery.html       200
+/reviews            /reviews.html       200
+/order              /order.html         200
+/contact            /contact.html       200
+/about              /about.html         200
+/home               /index.html         200
+/                   /index.html         200

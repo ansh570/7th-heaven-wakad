@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Owner Portal | 7th Heaven Wakad - Management Console</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body id="admin-container">
+
+  <!-- Secure Login Modal (Protects dashboard) -->
+  <div class="login-modal-overlay" id="login-modal">
+    <div class="login-card">
+      <img src="assets/images/logo.svg" alt="7th Heaven Wakad" class="login-logo">
+      <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Owner Access Portal</h2>
+      <p style="font-size: 0.9rem; margin-bottom: 1.8rem; color: var(--cream-muted);">
+        Enter authorized security passcode to manage the bakery menu, prices, uploads, and orders.
+      </p>
+
+      <form onsubmit="AdminController.handleLogin(event)">
+        <div class="form-group" style="margin-bottom: 1.2rem; text-align: left;">
+          <label>Security Passcode</label>
+          <input type="password" id="admin-pass-input" placeholder="Enter owner passcode" autofocus required>
+        </div>
+        <div id="login-error-msg" style="display: none; color: var(--ruby-500); font-size: 0.85rem; margin-bottom: 1rem;"></div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.95rem;">
+          <span>Authenticate & Open Dashboard</span>
+        </button>
+      </form>
+
+      <div style="margin-top: 1.5rem;">
+        <a href="index.html" style="font-size: 0.85rem; color: var(--gold-300);">← Back to Public Website</a>
+      </div>
+      <div style="font-size: 0.75rem; color: var(--cream-muted); margin-top: 1.5rem; opacity: 0.6;">
+        Authorized Store Passcodes: <code>WakadCake2026</code> or <code>7thheaven@wakad</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Main Layout -->
+  <div class="admin-layout">
+
+    <!-- Admin Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <img src="assets/images/logo.svg" alt="7th Heaven" style="height: 38px;">
+      </div>
+
+      <ul class="admin-nav-list">
+        <li class="admin-nav-item active" data-tab="dashboard">
+          <span class="nav-icon">📊</span>
+          <span>Dashboard</span>
+        </li>
+        <li class="admin-nav-item" data-tab="products">
+          <span class="nav-icon">🍰</span>
+          <span>Menu & Products</span>
+        </li>
+        <li class="admin-nav-item" data-tab="prices">
+          <span class="nav-icon">💰</span>
+          <span>Price Matrix</span>
+        </li>
+        <li class="admin-nav-item" data-tab="our-work">
+          <span class="nav-icon">📸</span>
+          <span>Upload Our Work</span>
+        </li>
+        <li class="admin-nav-item" data-tab="offers">
+          <span class="nav-icon">🏷️</span>
+          <span>Offers & Deals</span>
+        </li>
+        <li class="admin-nav-item" data-tab="reviews">
+          <span class="nav-icon">⭐</span>
+          <span>Review Moderation</span>
+        </li>
+        <li class="admin-nav-item" data-tab="orders">
+          <span class="nav-icon">📦</span>
+          <span>Orders Desk</span>
+        </li>
+        <li class="admin-nav-item" data-tab="business-info">
+          <span class="nav-icon">📍</span>
+          <span>Business Info</span>
+        </li>
+        <li class="admin-nav-item" data-tab="settings">
+          <span class="nav-icon">⚙️</span>
+          <span>Database & Cloud</span>
+        </li>
+      </ul>
+
+      <div class="admin-sidebar-footer">
+        <div class="admin-nav-item" data-tab="logout" style="color: var(--ruby-500);">
+          <span class="nav-icon">🚪</span>
+          <span>Logout</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="admin-main">
+      <!-- Topbar -->
+      <header class="admin-topbar">
+        <div class="admin-topbar-left">
+          <button class="admin-mobile-toggle" id="admin-menu-toggle">☰</button>
+          <div style="font-weight: 700; color: var(--cream-100); font-size: 1.1rem;">
+            7th Heaven Wakad <span style="color: var(--gold-300); font-weight: normal;">• Austin Plaza Store</span>
+          </div>
+        </div>
+
+        <div class="admin-topbar-right">
+          <div class="store-live-badge">
+            <span class="pill-dot"></span>
+            <span>Live Kitchen Active</span>
+          </div>
+          <a href="index.html" target="_blank" class="btn btn-secondary" style="padding: 0.45rem 1rem; font-size: 0.85rem;">
+            View Public Site ↗
+          </a>
+        </div>
+      </header>
+
+      <!-- Tab Panels Body -->
+      <div class="admin-body">
+
+        <!-- 1. DASHBOARD OVERVIEW PANEL -->
+        <div class="admin-panel active" id="panel-dashboard">
+          <div class="section-badge">Store Overview</div>
+          <h2 style="margin-bottom: 2rem;">Welcome, <span class="gold-text">Store Owner</span></h2>
+
+          <div class="metric-grid">
+            <div class="metric-card">
+              <div class="metric-icon">🎂</div>
+              <div>
+                <div class="metric-val" id="metric-products">0</div>
+                <div class="metric-label">Active Menu Items</div>
+              </div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-icon">📦</div>
+              <div>
+                <div class="metric-val" id="metric-orders">0</div>
+                <div class="metric-label">Total WhatsApp Orders</div>
+              </div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-icon">📸</div>
+              <div>
+                <div class="metric-val" id="metric-work">0</div>
+                <div class="metric-label">"Our Work" Photos</div>
+              </div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-icon">⭐</div>
+              <div>
+                <div class="metric-val" id="metric-reviews">0</div>
+                <div class="metric-label">Customer Reviews</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Orders Card -->
+          <div class="admin-table-card">
+            <div class="table-header-row">
+              <h3 style="font-size: 1.2rem;">Recent Orders</h3>
+              <button class="btn btn-secondary" style="font-size: 0.82rem; padding: 0.4rem 0.9rem;" onclick="AdminController.switchTab('orders')">View All Orders</button>
+            </div>
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Order Code</th>
+                    <th>Customer</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Date & Time</th>
+                  </tr>
+                </thead>
+                <tbody id="dash-recent-orders"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. PRODUCTS & MENU PANEL -->
+        <div class="admin-panel" id="panel-products">
+          <div class="section-badge">Menu Control</div>
+          <h2 style="margin-bottom: 2rem;">Manage Bakery <span class="gold-text">Menu, Cake Types & Prices</span></h2>
+
+          <!-- Add / Edit Product Form -->
+          <div class="upload-work-card" style="margin-bottom: 2.5rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+              <h3 style="font-size: 1.25rem; margin: 0;" id="prod-form-title">🍰 Add / Edit Cake or Menu Item</h3>
+              <button type="button" class="btn btn-secondary" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" onclick="AdminController.resetProductForm()">+ New Cake</button>
+            </div>
+            <form id="admin-product-form">
+              <input type="hidden" id="prod-edit-id">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>Cake / Product Name *</label>
+                  <input type="text" id="prod-edit-name" placeholder="e.g. Lotus Biscoff Cheesecake, Royal Rasmalai" required>
+                </div>
+
+                <div class="form-group">
+                  <label>Cake Type / Category *</label>
+                  <select id="prod-edit-category" onchange="AdminController.handleCategoryChange(this.value)" required>
+                    <!-- Populated dynamically and supports + Add New Type -->
+                  </select>
+                </div>
+
+                <!-- Hidden until user selects __new__ -->
+                <div class="form-group full-width" id="new-category-box" style="display: none; background: rgba(223, 168, 95, 0.08); padding: 1.2rem; border-radius: var(--radius-md); border: 1px dashed var(--gold-400);">
+                  <label style="color: var(--gold-200); font-weight: 600; margin-bottom: 0.5rem; display: block;">✨ Add New Cake Type / Category Name</label>
+                  <div style="display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap;">
+                    <input type="text" id="prod-new-category-name" placeholder="e.g. Pinata Cakes, Bento Cakes, Cheesecakes, Jar Cakes, Dry Fruit Cakes" style="flex: 1; min-width: 240px;">
+                    <button type="button" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.88rem;" onclick="AdminController.addNewCategory()">Create Cake Type</button>
+                  </div>
+                  <small style="color: var(--cream-muted); margin-top: 0.4rem; display: block;">This new category will automatically be saved and will immediately get its own filter button on your public website!</small>
+                </div>
+
+                <!-- Weight Tiers & Pricing -->
+                <div class="form-group">
+                  <label>Starting / 0.5 KG Price (₹) *</label>
+                  <input type="number" id="prod-edit-price" placeholder="550" required oninput="AdminController.autoCalcWeights(this.value)">
+                </div>
+                <div class="form-group">
+                  <label>1.0 KG Price (₹)</label>
+                  <input type="number" id="prod-edit-price-10" placeholder="1050">
+                </div>
+                <div class="form-group">
+                  <label>1.5 KG Price (₹)</label>
+                  <input type="number" id="prod-edit-price-15" placeholder="1550">
+                </div>
+                <div class="form-group">
+                  <label>2.0 KG Price (₹)</label>
+                  <input type="number" id="prod-edit-price-20" placeholder="2000">
+                </div>
+
+                <!-- Cake Image Selector & Uploader -->
+                <div class="form-group full-width">
+                  <label>Cake Photo (Upload from Phone Camera, Gallery, Presets, or URL) *</label>
+                  <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 0.8rem;">
+                    <label class="btn btn-secondary" style="cursor: pointer; font-size: 0.85rem; padding: 0.5rem 1rem;">
+                      📷 Upload from Device <input type="file" id="prod-file-input" accept="image/*" style="display: none;" onchange="AdminController.handleProductImageUpload(this)">
+                    </label>
+                    <button type="button" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;" onclick="AdminController.showProductPresetPicker()">🖼️ Choose Sample Photo</button>
+                  </div>
+                  <input type="text" id="prod-edit-img" placeholder="assets/images/hero_cake.jpg" oninput="AdminController.updateProductImgPreview(this.value)">
+
+                  <!-- Live Preview Box -->
+                  <div id="prod-img-preview-wrap" style="margin-top: 0.8rem; display: flex; align-items: center; gap: 1rem;">
+                    <img id="prod-img-preview" src="assets/images/hero_cake.jpg" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; border: 1px solid var(--border-active);" onerror="this.src='assets/images/hero_cake.jpg'">
+                    <div>
+                      <span style="font-size: 0.85rem; font-weight: 600; color: var(--gold-200);">Live Cake Preview</span>
+                      <div style="font-size: 0.78rem; color: var(--cream-muted);">Displays on home, menu, and cake builder pages</div>
+                    </div>
+                  </div>
+
+                  <!-- Preset sample photos container -->
+                  <div id="prod-presets-container" style="display: none; margin-top: 1rem; padding: 1rem; background: rgba(0,0,0,0.3); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                    <div style="font-size: 0.85rem; margin-bottom: 0.6rem; color: var(--gold-200);">Click any sample photo to use:</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.6rem;" id="prod-presets-grid"></div>
+                  </div>
+                </div>
+
+                <div class="form-group full-width">
+                  <label>Flavors & Description</label>
+                  <textarea id="prod-edit-desc" rows="2" placeholder="Brief delicious description of cake sponge, cream, and handcrafted decoration..."></textarea>
+                </div>
+
+                <div class="form-group full-width" style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                  <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer;">
+                    <input type="checkbox" id="prod-edit-bestseller" style="width: auto;">
+                    <span>★ Mark as Wakad Bestseller</span>
+                  </label>
+                  <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer;">
+                    <input type="checkbox" id="prod-edit-available" style="width: auto;" checked>
+                    <span>✓ In Stock (Live Kitchen Ready)</span>
+                  </label>
+                </div>
+              </div>
+
+              <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                <button type="submit" class="btn btn-primary" id="prod-submit-btn">Save Cake / Product</button>
+                <button type="button" class="btn btn-secondary" onclick="AdminController.resetProductForm()">Clear Form</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Products List Table -->
+          <div class="admin-table-card">
+            <div class="table-header-row">
+              <h3 style="font-size: 1.2rem;">All Menu Products</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Photo</th>
+                    <th>Product & Category</th>
+                    <th>Base Price (0.5 KG)</th>
+                    <th>Weight Tiers</th>
+                    <th>Bestseller</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-products-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. PRICE MATRIX PANEL -->
+        <div class="admin-panel" id="panel-prices">
+          <div class="section-badge">Direct Pricing</div>
+          <h2 style="margin-bottom: 1rem;">Live <span class="gold-text">Price Matrix</span></h2>
+          <p style="margin-bottom: 2rem;">Update prices across weight tiers (0.5 KG, 1.0 KG, 1.5 KG, 2.0 KG). Values instantly update in WhatsApp quotes and public menus without code deploys.</p>
+
+          <div class="admin-table-card">
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>0.5 KG (₹)</th>
+                    <th>1.0 KG (₹)</th>
+                    <th>1.5 KG (₹)</th>
+                    <th>2.0 KG (₹)</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-prices-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. UPLOAD OUR WORK PANEL (Phone Upload + Compression) -->
+        <div class="admin-panel" id="panel-our-work">
+          <div class="section-badge">Gallery Showcase</div>
+          <h2 style="margin-bottom: 1rem;">Upload <span class="gold-text">Our Work Images</span></h2>
+          <p style="margin-bottom: 2rem;">Upload real photos of cakes baked today directly from your smartphone or laptop. Images are auto-compressed and instantly appear on the public "Our Work" gallery.</p>
+
+          <div class="upload-work-card">
+            <form id="work-upload-form">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>Creation Title *</label>
+                  <input type="text" id="work-title" placeholder="e.g. 3-Tier Gold Foil Wedding Cake" required>
+                </div>
+                <div class="form-group">
+                  <label>Category *</label>
+                  <select id="work-category" required>
+                    <option value="Birthday Cakes">Birthday Cakes</option>
+                    <option value="Custom Cakes">Custom Cakes</option>
+                    <option value="Designer Cakes">Designer Cakes</option>
+                    <option value="Anniversary Cakes">Anniversary Cakes</option>
+                    <option value="Theme Cakes">Theme Cakes</option>
+                    <option value="Pastries">Pastries</option>
+                    <option value="Celebrations">Celebrations</option>
+                    <option value="Bakery">Bakery Ambience</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="form-group full-width">
+                  <label>Description (Optional)</label>
+                  <input type="text" id="work-desc" placeholder="e.g. Belgian chocolate base with fresh edible roses for client in Wakad">
+                </div>
+
+                <!-- Dropzone / Phone file select -->
+                <div class="form-group full-width">
+                  <label>Select Cake Image (From Phone Camera or File) *</label>
+                  <div class="file-dropzone" id="work-dropzone">
+                    <input type="file" id="work-file-input" accept="image/*" style="display: none;">
+                    <div class="dropzone-icon">📷</div>
+                    <strong style="color: var(--cream-100); display: block;">Tap to select photo from phone or drop here</strong>
+                    <small style="color: var(--cream-muted);">Auto-compressed client side for blazing performance</small>
+                  </div>
+
+                  <div id="work-upload-progress" style="display: none; color: var(--gold-300); font-size: 0.85rem; margin-top: 0.5rem;">
+                    Compressing image...
+                  </div>
+
+                  <div class="file-preview-wrap" id="work-preview-wrap">
+                    <button type="button" class="file-remove-btn" onclick="AdminController.removeWorkImage()">&times;</button>
+                    <img src="" id="work-preview-img" alt="Work Preview">
+                  </div>
+
+                  <input type="hidden" id="work-url-fallback" value="assets/images/hero_cake.jpg">
+                </div>
+
+                <div class="form-group full-width" style="flex-direction: row; align-items: center; gap: 0.8rem;">
+                  <input type="checkbox" id="work-featured" style="width: auto;">
+                  <label for="work-featured" style="margin: 0; cursor: pointer;">Feature on Homepage Showcase</label>
+                </div>
+              </div>
+
+              <div style="margin-top: 2rem;">
+                <button type="submit" class="btn btn-primary" style="padding: 1rem 2.5rem;">
+                  <span>Upload & Publish to "Our Work"</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Existing Works List -->
+          <div class="admin-table-card">
+            <div class="table-header-row">
+              <h3 style="font-size: 1.2rem;">Published Portfolio Items</h3>
+            </div>
+            <div style="padding: 1.5rem;" id="admin-work-list"></div>
+          </div>
+        </div>
+
+        <!-- 5. OFFERS PANEL -->
+        <div class="admin-panel" id="panel-offers">
+          <div class="section-badge">Promotions</div>
+          <h2 style="margin-bottom: 2rem;">Manage <span class="gold-text">Special Offers & Deals</span></h2>
+
+          <div class="upload-work-card">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+              <h3 style="font-size: 1.25rem; margin: 0;" id="offer-form-title">🏷️ Create / Edit Special Offer</h3>
+              <button type="button" class="btn btn-secondary" style="font-size: 0.82rem; padding: 0.4rem 0.85rem;" onclick="AdminController.resetOfferForm()">+ New Offer</button>
+            </div>
+            <form id="admin-offer-form">
+              <input type="hidden" id="offer-edit-id">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>Offer Title *</label>
+                  <input type="text" id="offer-title" placeholder="e.g. Diwali Celebration Combo, Weekend Truffle Fest" required>
+                </div>
+                <div class="form-group">
+                  <label>Promo Code (Optional)</label>
+                  <input type="text" id="offer-promo" placeholder="e.g. DIWALI150, WAKAD20">
+                </div>
+                <div class="form-group">
+                  <label>Original Price (₹)</label>
+                  <input type="number" id="offer-orig-price" placeholder="1250">
+                </div>
+                <div class="form-group">
+                  <label>Offer Price (₹) *</label>
+                  <input type="number" id="offer-price" placeholder="999" required>
+                </div>
+                <div class="form-group">
+                  <label>Badge Text</label>
+                  <input type="text" id="offer-badge" placeholder="e.g. 20% OFF, Limited Time, Weekend Special">
+                </div>
+                <div class="form-group">
+                  <label>Expiry Date *</label>
+                  <input type="date" id="offer-end-date" required>
+                </div>
+
+                <!-- Offer Image Selector & Uploader -->
+                <div class="form-group full-width">
+                  <label>Offer Cake / Banner Photo * (Upload from Phone, Select Preset, or Paste URL)</label>
+                  <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 0.8rem;">
+                    <label class="btn btn-secondary" style="cursor: pointer; font-size: 0.85rem; padding: 0.5rem 1rem;">
+                      📷 Upload from Device <input type="file" id="offer-file-input" accept="image/*" style="display: none;" onchange="AdminController.handleOfferImageUpload(this)">
+                    </label>
+                    <button type="button" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.5rem 1rem;" onclick="AdminController.showOfferPresetPicker()">🖼️ Choose Sample Photo</button>
+                  </div>
+                  <input type="text" id="offer-img-url" placeholder="assets/images/designer_cake.jpg" oninput="AdminController.updateOfferImgPreview(this.value)">
+
+                  <!-- Live Preview Box -->
+                  <div id="offer-img-preview-wrap" style="margin-top: 0.8rem; display: flex; align-items: center; gap: 1rem;">
+                    <img id="offer-img-preview" src="assets/images/designer_cake.jpg" style="width: 100px; height: 70px; border-radius: 8px; object-fit: cover; border: 1px solid var(--border-active);" onerror="this.src='assets/images/designer_cake.jpg'">
+                    <div>
+                      <span style="font-size: 0.85rem; font-weight: 600; color: var(--gold-200);">Offer Banner Live Preview</span>
+                      <div style="font-size: 0.78rem; color: var(--cream-muted);">Instantly displayed on the public website offers and homepage</div>
+                    </div>
+                  </div>
+
+                  <!-- Preset sample photos container -->
+                  <div id="offer-presets-container" style="display: none; margin-top: 1rem; padding: 1rem; background: rgba(0,0,0,0.3); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+                    <div style="font-size: 0.85rem; margin-bottom: 0.6rem; color: var(--gold-200);">Click any sample photo to use for this offer:</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.6rem;" id="offer-presets-grid"></div>
+                  </div>
+                </div>
+
+                <div class="form-group full-width">
+                  <label>Offer Description *</label>
+                  <textarea id="offer-desc" rows="2" placeholder="Details of discount, free delivery, and applicable cakes..." required></textarea>
+                </div>
+              </div>
+              <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                <button type="submit" class="btn btn-primary" id="offer-submit-btn">Publish Offer</button>
+                <button type="button" class="btn btn-secondary" onclick="AdminController.resetOfferForm()">Clear Form</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="admin-table-card">
+            <div class="table-header-row">
+              <h3 style="font-size: 1.2rem;">All Offers</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Photo</th>
+                    <th>Title & Badge</th>
+                    <th>Code</th>
+                    <th>Price</th>
+                    <th>Valid Till</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-offers-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. REVIEWS PANEL -->
+        <div class="admin-panel" id="panel-reviews">
+          <div class="section-badge">Moderation</div>
+          <h2 style="margin-bottom: 2rem;">Customer <span class="gold-text">Review Moderation</span></h2>
+
+          <div class="admin-table-card">
+            <div class="table-header-row">
+              <h3 style="font-size: 1.2rem;">Submitted Reviews</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Customer</th>
+                    <th>Rating</th>
+                    <th>Review Content</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-reviews-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. ORDERS PANEL -->
+        <div class="admin-panel" id="panel-orders">
+          <div class="section-badge">Fulfillment</div>
+          <h2 style="margin-bottom: 2rem;">Incoming <span class="gold-text">Order Records</span></h2>
+
+          <div class="admin-table-card">
+            <div class="table-header-row">
+              <h3 style="font-size: 1.2rem;">Order Tracker</h3>
+            </div>
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Code</th>
+                    <th>Customer & Phone</th>
+                    <th>Items</th>
+                    <th>Total</th>
+                    <th>Required For</th>
+                    <th>Change Status</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-orders-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. BUSINESS INFO PANEL -->
+        <div class="admin-panel" id="panel-business-info">
+          <div class="section-badge">Google Listing</div>
+          <h2 style="margin-bottom: 2rem;">Business Information & <span class="gold-text">Google Maps</span></h2>
+
+          <div class="upload-work-card">
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label>Store Name</label>
+                <input type="text" value="7th Heaven Wakad - The Cake Shop" readonly>
+              </div>
+              <div class="form-group full-width">
+                <label>Address</label>
+                <input type="text" value="Shop No. 109, Austin Plaza, Mhatoba Chowk, Chhatrapati Chowk Road, Kaspate Wasti, Wakad, Pune, Maharashtra 411057" readonly>
+              </div>
+              <div class="form-group">
+                <label>Direct Contact Phone</label>
+                <input type="text" value="+91 90220 40850" readonly>
+              </div>
+              <div class="form-group">
+                <label>WhatsApp Hotline</label>
+                <input type="text" value="919022040850" readonly>
+              </div>
+              <div class="form-group">
+                <label>Google Maps Coordinates</label>
+                <input type="text" value="18.5950839, 73.7687737" readonly>
+              </div>
+              <div class="form-group">
+                <label>Store Operating Hours</label>
+                <input type="text" value="9:30 AM – 11:00 PM (Daily, Mon-Sun)" readonly>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. SETTINGS & CLOUD SYNC PANEL -->
+        <div class="admin-panel" id="panel-settings">
+          <div class="section-badge">Supabase Backend</div>
+          <h2 style="margin-bottom: 2rem;">Database & <span class="gold-text">Cloud Sync</span></h2>
+
+          <div class="upload-work-card" style="margin-bottom: 2rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1rem;">
+              <h3 style="font-size: 1.25rem; margin: 0;">Supabase Connection Settings</h3>
+              <span class="store-live-badge" style="background: rgba(37, 211, 102, 0.15); color: #25D366; border: 1px solid rgba(37, 211, 102, 0.3);">
+                ● Cloud Database Active
+              </span>
+            </div>
+            <p style="font-size: 0.92rem; color: var(--cream-muted); margin-bottom: 1.5rem;">
+              Your Supabase cloud database is connected. Changes made on your phone or laptop sync globally to all customers.
+            </p>
+
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label>Supabase Project URL</label>
+                <input type="text" id="supabase-url-input" placeholder="https://xyzcompany.supabase.co">
+              </div>
+              <div class="form-group full-width">
+                <label>Supabase Anon Key</label>
+                <input type="password" id="supabase-key-input" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...">
+              </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+              <button class="btn btn-primary" onclick="AdminController.saveSupabaseSettings()">Save Connection</button>
+            </div>
+          </div>
+
+          <div class="upload-work-card">
+            <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">Data Backup & Reset</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+              <button class="btn btn-secondary" onclick="AdminController.exportBackup()">📥 Export Full JSON Backup</button>
+              <button class="btn btn-secondary" style="color: var(--ruby-500);" onclick="AdminController.resetStoreData()">🔄 Reset to Default Wakad Seed</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/admin.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

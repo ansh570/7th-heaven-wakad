@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom & Designer Cakes | 7th Heaven Wakad</title>
+  <meta name="description" content="Order custom designer cakes in Wakad, Pune. Upload reference photos for wedding cakes, multi-tier birthday cakes, fondant figures, and theme celebrations.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-emblem"></div>
+    <div class="preloader-brand">7th Heaven</div>
+    <div class="preloader-sub">CUSTOM CAKE DESIGN STUDIO</div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand" title="7th Heaven Wakad">
+        <img src="assets/images/logo.svg" alt="7th Heaven Wakad" class="nav-logo-img">
+      </a>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About Us</a></li>
+        <li><a href="menu.html" class="nav-link">Menu</a></li>
+        <li><a href="cakes.html" class="nav-link">Cakes</a></li>
+        <li><a href="custom-cakes.html" class="nav-link active">Custom Cakes</a></li>
+        <li><a href="pastries.html" class="nav-link">Pastries</a></li>
+        <li><a href="offers.html" class="nav-link">Offers</a></li>
+        <li><a href="gallery.html" class="nav-link">Our Work</a></li>
+        <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-mobile-owner-item">
+          <a href="admin.html" class="nav-mobile-owner-card">
+            <span class="nav-mobile-owner-icon">🔐</span>
+            <div class="nav-mobile-owner-info">
+              <span class="nav-mobile-owner-title">Owner Login Portal</span>
+              <span class="nav-mobile-owner-desc">Manage Cakes, Prices & Offers</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <a href="admin.html" class="btn btn-owner-nav" title="Owner Login Portal" aria-label="Owner Login">
+          <span class="owner-icon">🔐</span>
+          <span class="owner-text">Owner</span>
+        </a>
+        <a href="order.html" class="btn btn-primary" id="nav-order-btn">Order Now</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="section section-tight" style="background: radial-gradient(circle at 50% 20%, rgba(223, 168, 95, 0.15) 0%, transparent 60%); text-align: center;">
+    <div class="container">
+      <span class="section-badge">Bespoke Culinary Art</span>
+      <h1 style="margin-bottom: 0.8rem;">Custom Cake <span class="gold-text">Enquiry Studio</span></h1>
+      <p style="max-width: 650px; margin: 0 auto;">
+        Have a specific design in mind? Share your inspiration photo, preferred flavor, and event date. Our pastry artists will bring it to life in 100% pure vegetarian glory.
+      </p>
+    </div>
+  </header>
+
+  <!-- Custom Cake Enquiry Form Section -->
+  <section class="section" style="padding-top: 1rem;">
+    <div class="container">
+      <div class="enquiry-form-card reveal">
+        <form id="custom-cake-form">
+          <div class="form-grid">
+            <!-- Customer Info -->
+            <div class="form-group">
+              <label>Your Full Name *</label>
+              <input type="text" id="custom-name" placeholder="e.g. Radhika Deshmukh" required>
+            </div>
+
+            <div class="form-group">
+              <label>Phone Number (WhatsApp preferred) *</label>
+              <input type="tel" id="custom-phone" placeholder="e.g. 9876543210" required>
+            </div>
+
+            <!-- Cake Type -->
+            <div class="form-group">
+              <label>Cake Type / Architecture *</label>
+              <select id="custom-cake-type" required>
+                <option value="Multi-Tier Wedding Cake">Multi-Tier Wedding / Reception Cake</option>
+                <option value="Designer Fondant Birthday Cake" selected>Designer Fondant Birthday Cake</option>
+                <option value="Semi-Fondant Elegant Cake">Semi-Fondant Elegant Cake</option>
+                <option value="Piñata Hammer Surprise Cake">Piñata Hammer Surprise Cake</option>
+                <option value="Pull-Me-Up Waterfall Cake">Pull-Me-Up Waterfall Cake</option>
+                <option value="Edible Photo Printed Cake">Edible Photo Printed Cake</option>
+                <option value="Cartoon / Superhero Theme Cake">Cartoon / Superhero Theme Cake</option>
+                <option value="Boutique Floral Milestone Cake">Boutique Floral Milestone Cake</option>
+              </select>
+            </div>
+
+            <!-- Flavor -->
+            <div class="form-group">
+              <label>Preferred Flavor *</label>
+              <select id="custom-flavor" required>
+                <option value="Belgian Chocolate Ganache" selected>Belgian Chocolate Ganache</option>
+                <option value="Royal Rasmalai Saffron">Royal Rasmalai Saffron</option>
+                <option value="Red Velvet Cream Cheese">Red Velvet Cream Cheese</option>
+                <option value="Lotus Biscoff Speculoos">Lotus Biscoff Speculoos</option>
+                <option value="Fresh Strawberry & Vanilla">Fresh Strawberry & Vanilla</option>
+                <option value="Dutch Truffle with Hazelnut">Dutch Truffle with Hazelnut</option>
+                <option value="Black Forest Supreme">Black Forest Supreme</option>
+                <option value="Pineapple Fresh Cream">Pineapple Fresh Cream</option>
+              </select>
+            </div>
+
+            <!-- Weight -->
+            <div class="form-group">
+              <label>Estimated Weight (KG) *</label>
+              <select id="custom-weight" required>
+                <option value="1.0 KG">1.0 KG (Serves 8-10)</option>
+                <option value="1.5 KG" selected>1.5 KG (Serves 12-15)</option>
+                <option value="2.0 KG (2-Tier possible)">2.0 KG (Serves 18-22)</option>
+                <option value="2.5 KG (2-Tier)">2.5 KG (Serves 25-30)</option>
+                <option value="3.0 KG (3-Tier)">3.0 KG (Serves 30-38)</option>
+                <option value="4.0+ KG (Grand Celebration)">4.0+ KG (Grand Celebration)</option>
+              </select>
+            </div>
+
+            <!-- Theme -->
+            <div class="form-group">
+              <label>Theme / Occasion *</label>
+              <input type="text" id="custom-theme" placeholder="e.g. 1st Birthday, 25th Silver Anniversary, Jungle Safari" required>
+            </div>
+
+            <!-- Required Date -->
+            <div class="form-group">
+              <label>Required Date *</label>
+              <input type="date" id="custom-date" required>
+            </div>
+
+            <!-- Required Time -->
+            <div class="form-group">
+              <label>Required Time *</label>
+              <select id="custom-time" required>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="1:00 PM">1:00 PM</option>
+                <option value="3:30 PM">3:30 PM</option>
+                <option value="5:30 PM">5:30 PM</option>
+                <option value="7:00 PM" selected>7:00 PM</option>
+                <option value="8:30 PM">8:30 PM</option>
+                <option value="10:00 PM">10:00 PM</option>
+              </select>
+            </div>
+
+            <!-- Message on Cake -->
+            <div class="form-group full-width">
+              <label>Message on Cake (Optional)</label>
+              <input type="text" id="custom-msg" placeholder="e.g. Happy 1st Birthday Aarav!">
+            </div>
+
+            <!-- Additional Instructions -->
+            <div class="form-group full-width">
+              <label>Additional Instructions / Color Preferences</label>
+              <textarea id="custom-instructions" rows="3" placeholder="Tell us about color palette, topper figurines, dietary specifications, or delivery instructions..."></textarea>
+            </div>
+
+            <!-- Reference Image Drag & Drop Uploader -->
+            <div class="form-group full-width">
+              <label>Reference Image Upload (Attach your inspiration design photo)</label>
+              <div class="file-dropzone" id="custom-dropzone">
+                <input type="file" id="custom-file-input" accept="image/*" style="display: none;">
+                <div class="dropzone-icon">📸</div>
+                <strong style="color: var(--cream-100); display: block;">Click or Drag & Drop Cake Photo Here</strong>
+                <small style="color: var(--cream-muted);">Supports JPG, PNG, WEBP from your phone or PC</small>
+              </div>
+
+              <!-- Preview -->
+              <div class="file-preview-wrap" id="custom-preview-wrap">
+                <button type="button" class="file-remove-btn" onclick="removeUploadedRef()">&times;</button>
+                <img src="" id="custom-preview-img" alt="Reference Cake Preview">
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 2.5rem; text-align: center;">
+            <button type="submit" class="btn btn-primary" style="font-size: 1.1rem; padding: 1.1rem 3rem;">
+              <span>Submit & Review WhatsApp Enquiry</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Confirmation Modal -->
+  <div class="modal-backdrop" id="enquiry-confirm-modal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span class="modal-badge">✓ Enquiry Generated</span>
+          <h3 class="modal-title">Custom Cake Request Ready</h3>
+        </div>
+        <button class="modal-close" onclick="closeConfirmModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.95rem; margin-bottom: 1.2rem;">
+          Your custom cake enquiry details are compiled. Click below to launch WhatsApp and connect with the 7th Heaven Wakad chef team. You can attach your inspiration photo directly in the chat!
+        </p>
+
+        <div class="message-preview-container" style="margin-top: 0; padding-top: 0; border: none;">
+          <label class="preview-label">Formatted Message Preview:</label>
+          <textarea id="confirm-msg-preview" class="preview-textarea" rows="8"></textarea>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" onclick="closeConfirmModal()">Edit Details</button>
+          <button type="button" class="btn btn-whatsapp-order" onclick="sendCustomEnquiryToWhatsApp()">
+            <span>Send Enquiry on WhatsApp</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Luxury Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/images/logo.svg" alt="7th Heaven Wakad" style="height: 48px;">
+          <p>Wakad’s favorite 100% Pure Vegetarian Live Kitchen Bakery. Crafting unforgettable celebration cakes.</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="menu.html">Our Menu</a></li>
+            <li><a href="cakes.html">Order Cakes</a></li>
+            <li><a href="custom-cakes.html">Custom Designer Cakes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Explore</h4>
+          <ul class="footer-links">
+            <li><a href="gallery.html">Our Work Portfolio</a></li>
+            <li><a href="offers.html">Special Offers</a></li>
+            <li><a href="reviews.html">Customer Reviews</a></li>
+            <li><a href="contact.html">Store Location</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Visit Us</h4>
+          <p style="font-size: 0.92rem;">Shop No. 109, Austin Plaza, Mhatoba Chowk, Chhatrapati Chowk Road, Kaspate Wasti, Wakad, Pune, 411057</p>
+          <p style="font-size: 0.92rem; color: var(--gold-200);">Phone: +91 90220 40850</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 7th Heaven Wakad - The Cake Shop. All rights reserved.</div>
+        <div><a href="admin.html" class="owner-shortcut-hint" title="Owner Login (Passcode: WakadCake2026)">🔐 Owner Login Portal</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/whatsapp.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    let hasUploadedImage = false;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set min date to today
+      const dateEl = document.getElementById('custom-date');
+      if (dateEl) {
+        const today = new Date().toISOString().split('T')[0];
+        dateEl.min = today;
+        dateEl.value = today;
+      }
+
+      // Drag and drop listeners
+      const dropzone = document.getElementById('custom-dropzone');
+      const fileInput = document.getElementById('custom-file-input');
+      if (dropzone && fileInput) {
+        dropzone.addEventListener('click', () => fileInput.click());
+
+        dropzone.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          dropzone.classList.add('dragover');
+        });
+
+        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+
+        dropzone.addEventListener('drop', (e) => {
+          e.preventDefault();
+          dropzone.classList.remove('dragover');
+          if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+            handleRefFile(e.dataTransfer.files[0]);
+          }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+          if (e.target.files && e.target.files[0]) {
+            handleRefFile(e.target.files[0]);
+          }
+        });
+      }
+
+      // Form submission
+      const form = document.getElementById('custom-cake-form');
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          compileEnquiry();
+        });
+      }
+    });
+
+    function handleRefFile(file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        document.getElementById('custom-preview-img').src = e.target.result;
+        document.getElementById('custom-preview-wrap').style.display = 'block';
+        hasUploadedImage = true;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function removeUploadedRef() {
+      document.getElementById('custom-file-input').value = '';
+      document.getElementById('custom-preview-wrap').style.display = 'none';
+      hasUploadedImage = false;
+    }
+
+    function compileEnquiry() {
+      const details = {
+        customerName: document.getElementById('custom-name').value.trim(),
+        customerPhone: document.getElementById('custom-phone').value.trim(),
+        cakeType: document.getElementById('custom-cake-type').value,
+        flavor: document.getElementById('custom-flavor').value,
+        weight: document.getElementById('custom-weight').value,
+        theme: document.getElementById('custom-theme').value.trim(),
+        cakeMessage: document.getElementById('custom-msg').value.trim(),
+        requiredDate: document.getElementById('custom-date').value,
+        requiredTime: document.getElementById('custom-time').value,
+        instructions: document.getElementById('custom-instructions').value.trim(),
+        hasReferenceImage: hasUploadedImage
+      };
+
+      const msg = window.WhatsAppService.buildCustomCakeEnquiryMessage(details);
+      document.getElementById('confirm-msg-preview').value = msg;
+      document.getElementById('enquiry-confirm-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function sendCustomEnquiryToWhatsApp() {
+      const msg = document.getElementById('confirm-msg-preview').value;
+      const url = window.WhatsAppService.generateUrl(msg);
+      window.open(url, '_blank');
+      closeConfirmModal();
+    }
+
+    function closeConfirmModal() {
+      document.getElementById('enquiry-confirm-modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  </script>
+</body>
+</html>

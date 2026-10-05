@@ -1,0 +1,6 @@
+# Robots.txt for 7th Heaven Wakad - The Cake Shop
+User-agent: *
+Allow: /
+Disallow: /admin.html
+
+Sitemap: https://7thheavenwakad.com/sitemap.xml

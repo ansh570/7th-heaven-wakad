@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Menu | 7th Heaven Wakad - 100% Pure Veg Cakes & Desserts</title>
+  <meta name="description" content="Explore the full bakery menu of 7th Heaven Wakad. Freshly baked pure veg cakes, pastries, brownies, cupcakes, macarons, and custom celebration cakes in Austin Plaza, Wakad.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-emblem"></div>
+    <div class="preloader-brand">7th Heaven</div>
+    <div class="preloader-sub">EXPLORE OUR GOURMET MENU</div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand" title="7th Heaven Wakad">
+        <img src="assets/images/logo.svg" alt="7th Heaven Wakad" class="nav-logo-img">
+      </a>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About Us</a></li>
+        <li><a href="menu.html" class="nav-link active">Menu</a></li>
+        <li><a href="cakes.html" class="nav-link">Cakes</a></li>
+        <li><a href="custom-cakes.html" class="nav-link">Custom Cakes</a></li>
+        <li><a href="pastries.html" class="nav-link">Pastries</a></li>
+        <li><a href="offers.html" class="nav-link">Offers</a></li>
+        <li><a href="gallery.html" class="nav-link">Our Work</a></li>
+        <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-mobile-owner-item">
+          <a href="admin.html" class="nav-mobile-owner-card">
+            <span class="nav-mobile-owner-icon">🔐</span>
+            <div class="nav-mobile-owner-info">
+              <span class="nav-mobile-owner-title">Owner Login Portal</span>
+              <span class="nav-mobile-owner-desc">Manage Cakes, Prices & Offers</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <a href="admin.html" class="btn btn-owner-nav" title="Owner Login Portal" aria-label="Owner Login">
+          <span class="owner-icon">🔐</span>
+          <span class="owner-text">Owner</span>
+        </a>
+        <a href="order.html" class="btn btn-primary" id="nav-order-btn">Order Now</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header & Search -->
+  <header class="section section-tight" style="background: radial-gradient(circle at 50% 20%, rgba(223, 168, 95, 0.14) 0%, transparent 60%); text-align: center;">
+    <div class="container">
+      <span class="section-badge">Gourmet Pure Veg Bakery</span>
+      <h1 style="margin-bottom: 0.8rem;">Explore Our <span class="gold-text">Delightful Menu</span></h1>
+      <p style="max-width: 600px; margin: 0 auto 2.2rem;">
+        All items are 100% pure vegetarian, handcrafted with premium ingredients, and controlled live by our bakery dashboard.
+      </p>
+
+      <!-- Live Search Bar -->
+      <div style="max-width: 520px; margin: 0 auto 1.5rem; position: relative;">
+        <input type="text" id="menu-search-input" placeholder="🔍 Search cakes, pastries, brownies, truffles..." 
+          style="border-radius: var(--radius-full); padding: 0.95rem 1.8rem; font-size: 1rem; background: rgba(22, 14, 11, 0.95); border: 1px solid var(--border-active); box-shadow: 0 8px 25px rgba(0,0,0,0.5);">
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu Content Section -->
+  <section class="section" style="padding-top: 1rem;">
+    <div class="container">
+      <!-- Category Tabs (Dynamically populated from Store) -->
+      <div class="filter-tabs" id="menu-category-tabs"></div>
+
+      <!-- Products Grid -->
+      <div class="product-grid" id="menu-products-grid"></div>
+
+      <!-- No items found banner -->
+      <div id="no-products-msg" style="display: none; text-align: center; padding: 4rem 1rem; color: var(--cream-muted);">
+        <p style="font-size: 1.2rem;">No matching treats found. Try a different search keyword or category!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Luxury Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/images/logo.svg" alt="7th Heaven Wakad" style="height: 48px;">
+          <p>Wakad’s favorite 100% Pure Vegetarian Live Kitchen Bakery. Crafting unforgettable celebration cakes.</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="menu.html">Our Menu</a></li>
+            <li><a href="cakes.html">Order Cakes</a></li>
+            <li><a href="custom-cakes.html">Custom Designer Cakes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Explore</h4>
+          <ul class="footer-links">
+            <li><a href="gallery.html">Our Work Portfolio</a></li>
+            <li><a href="offers.html">Special Offers</a></li>
+            <li><a href="reviews.html">Customer Reviews</a></li>
+            <li><a href="contact.html">Store Location</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Visit Us</h4>
+          <p style="font-size: 0.92rem;">Shop No. 109, Austin Plaza, Mhatoba Chowk, Chhatrapati Chowk Road, Kaspate Wasti, Wakad, Pune, 411057</p>
+          <p style="font-size: 0.92rem; color: var(--gold-200);">Phone: +91 90220 40850</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 7th Heaven Wakad - The Cake Shop. All rights reserved.</div>
+        <div><a href="admin.html" class="owner-shortcut-hint" title="Owner Login (Passcode: WakadCake2026)">🔐 Owner Login Portal</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/whatsapp.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    let activeCategory = 'all';
+    let searchQuery = '';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCategoryFilters();
+      renderProducts();
+
+      // Search input listener
+      const searchInput = document.getElementById('menu-search-input');
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value.toLowerCase().trim();
+          renderProducts();
+        });
+      }
+
+      // Re-render when store updates from Owner Dashboard
+      if (window.Store) {
+        window.Store.on('products-changed', () => renderProducts());
+        window.Store.on('categories-changed', () => renderCategoryFilters());
+      }
+    });
+
+    function renderCategoryFilters() {
+      const container = document.getElementById('menu-category-tabs');
+      if (!container || !window.Store) return;
+
+      const categories = window.Store.getCategories();
+      let html = `<button class="filter-btn ${activeCategory === 'all' ? 'active' : ''}" onclick="setCategory('all', this)">All Items</button>`;
+
+      categories.forEach(cat => {
+        html += `<button class="filter-btn ${activeCategory === cat.slug ? 'active' : ''}" onclick="setCategory('${cat.slug}', this)">${cat.name}</button>`;
+      });
+
+      container.innerHTML = html;
+    }
+
+    function setCategory(slug, btnEl) {
+      activeCategory = slug;
+      document.querySelectorAll('#menu-category-tabs .filter-btn').forEach(btn => btn.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+      renderProducts();
+    }
+
+    function renderProducts() {
+      const grid = document.getElementById('menu-products-grid');
+      const noMsg = document.getElementById('no-products-msg');
+      if (!grid || !window.Store) return;
+
+      let products = window.Store.getProducts();
+
+      if (activeCategory !== 'all') {
+        products = products.filter(p => p.category === activeCategory);
+      }
+
+      if (searchQuery) {
+        products = products.filter(p => 
+          p.name.toLowerCase().includes(searchQuery) ||
+          p.description.toLowerCase().includes(searchQuery) ||
+          p.category.toLowerCase().includes(searchQuery)
+        );
+      }
+
+      if (!products.length) {
+        grid.innerHTML = '';
+        noMsg.style.display = 'block';
+        return;
+      }
+
+      noMsg.style.display = 'none';
+      grid.innerHTML = products.map(p => {
+        const sizes = p.sizes || [{ label: 'Standard', price: p.basePrice }];
+        return `
+          <div class="product-card reveal">
+            <div class="product-img-wrap">
+              <div class="product-badge-wrap">
+                ${p.isBestseller ? '<span class="badge-tag badge-bestseller">★ Bestseller</span>' : ''}
+                ${p.isFeatured ? '<span class="badge-tag" style="background:var(--ruby-500); color:#fff;">Featured</span>' : ''}
+                <span class="badge-tag badge-veg"><span class="veg-icon"></span> 100% Veg</span>
+              </div>
+              <img src="${p.imageUrl}" alt="${p.name}" class="product-img" loading="lazy" onerror="this.src='assets/images/hero_cake.jpg'">
+            </div>
+            <div class="product-body">
+              <div class="product-category">${p.category}</div>
+              <h3 class="product-title">${p.name}</h3>
+              <p class="product-desc">${p.description}</p>
+              
+              <!-- Sizes preview -->
+              <div style="font-size: 0.8rem; color: var(--cream-muted); margin-bottom: 0.8rem;">
+                Available in: <strong>${sizes.map(s => s.label).join(' • ')}</strong>
+              </div>
+
+              <div class="product-footer">
+                <div class="product-price-box">
+                  <span class="price-label">Price starts</span>
+                  <span class="product-price">₹${p.basePrice}</span>
+                </div>
+                <div class="product-actions">
+                  <button class="btn btn-whatsapp btn-card-order" onclick="WhatsAppService.openOrderModal(Store.getProductById('${p.id}'))">
+                    <span>Order Now</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (window.initScrollAnimations) {
+        initScrollAnimations();
+      }
+    }
+  </script>
+</body>
+</html>

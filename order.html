@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Online | 7th Heaven Wakad - Instant WhatsApp Dispatch</title>
+  <meta name="description" content="Order fresh cakes and pastries online from 7th Heaven Wakad. Quick WhatsApp ordering with instant confirmation, live kitchen preparation, and same-day delivery.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-emblem"></div>
+    <div class="preloader-brand">7th Heaven</div>
+    <div class="preloader-sub">ONLINE ORDERING • WAKAD</div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand" title="7th Heaven Wakad">
+        <img src="assets/images/logo.svg" alt="7th Heaven Wakad" class="nav-logo-img">
+      </a>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About Us</a></li>
+        <li><a href="menu.html" class="nav-link">Menu</a></li>
+        <li><a href="cakes.html" class="nav-link">Cakes</a></li>
+        <li><a href="custom-cakes.html" class="nav-link">Custom Cakes</a></li>
+        <li><a href="pastries.html" class="nav-link">Pastries</a></li>
+        <li><a href="offers.html" class="nav-link">Offers</a></li>
+        <li><a href="gallery.html" class="nav-link">Our Work</a></li>
+        <li><a href="reviews.html" class="nav-link">Reviews</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-mobile-owner-item">
+          <a href="admin.html" class="nav-mobile-owner-card">
+            <span class="nav-mobile-owner-icon">🔐</span>
+            <div class="nav-mobile-owner-info">
+              <span class="nav-mobile-owner-title">Owner Login Portal</span>
+              <span class="nav-mobile-owner-desc">Manage Cakes, Prices & Offers</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <div class="nav-actions">
+        <a href="admin.html" class="btn btn-owner-nav" title="Owner Login Portal" aria-label="Owner Login">
+          <span class="owner-icon">🔐</span>
+          <span class="owner-text">Owner</span>
+        </a>
+        <a href="order.html" class="btn btn-primary active" id="nav-order-btn">Order Now</a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="section section-tight" style="background: radial-gradient(circle at 50% 20%, rgba(223, 168, 95, 0.15) 0%, transparent 60%); text-align: center;">
+    <div class="container">
+      <span class="section-badge">Instant WhatsApp Ordering</span>
+      <h1 style="margin-bottom: 0.8rem;">Order Fresh In <span class="gold-text">30 Seconds</span></h1>
+      <p style="max-width: 650px; margin: 0 auto 1.5rem;">
+        Select your favorite cake or dessert below. You can customize weight, inscription message, delivery time, and edit your WhatsApp order before sending!
+      </p>
+      <div style="display: inline-flex; align-items: center; gap: 0.8rem; background: rgba(37, 211, 102, 0.12); border: 1px solid rgba(37, 211, 102, 0.3); padding: 0.5rem 1.4rem; border-radius: var(--radius-full); color: #25D366; font-size: 0.9rem; font-weight: 600;">
+        <span>Direct WhatsApp Hotline: +91 90220 40850</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Quick Order Catalog -->
+  <section class="section" style="padding-top: 1rem;">
+    <div class="container">
+      <div class="filter-tabs" id="order-cat-tabs">
+        <button class="filter-btn active" onclick="filterOrderProducts('all', this)">All Treats</button>
+        <button class="filter-btn" onclick="filterOrderProducts('cakes', this)">Signature Cakes</button>
+        <button class="filter-btn" onclick="filterOrderProducts('custom-cakes', this)">Custom Cakes</button>
+        <button class="filter-btn" onclick="filterOrderProducts('pastries', this)">Pastries</button>
+        <button class="filter-btn" onclick="filterOrderProducts('cupcakes', this)">Brownies & Cupcakes</button>
+      </div>
+
+      <div class="product-grid" id="order-products-grid">
+        <!-- Injected from Store -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Delivery Information Banner -->
+  <section class="section" style="background: rgba(18, 11, 8, 0.6); border-top: 1px solid var(--border-subtle);">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+        <div class="review-card reveal">
+          <div style="font-size: 2rem; margin-bottom: 0.8rem;">📍</div>
+          <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem;">Store Pickup</h3>
+          <p style="font-size: 0.9rem; margin: 0;">Shop No. 109, Austin Plaza, Mhatoba Chowk, Kaspate Wasti, Wakad. Ready in 7-10 minutes!</p>
+        </div>
+        <div class="review-card reveal">
+          <div style="font-size: 2rem; margin-bottom: 0.8rem;">🛵</div>
+          <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem;">Local Delivery</h3>
+          <p style="font-size: 0.9rem; margin: 0;">Doorstep delivery across Wakad, Hinjewadi, Pimple Saudagar, Punawale, Tathawade & Ravet.</p>
+        </div>
+        <div class="review-card reveal">
+          <div style="font-size: 2rem; margin-bottom: 0.8rem;">🛡️</div>
+          <h3 style="font-size: 1.2rem; margin-bottom: 0.4rem;">Pure Veg Guarantee</h3>
+          <p style="font-size: 0.9rem; margin: 0;">Strictly 100% vegetarian bakery kitchen. Highest hygiene and quality ingredients.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Luxury Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/images/logo.svg" alt="7th Heaven Wakad" style="height: 48px;">
+          <p>Wakad’s favorite 100% Pure Vegetarian Live Kitchen Bakery. Crafting unforgettable celebration cakes.</p>
+        </div>
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="menu.html">Our Menu</a></li>
+            <li><a href="cakes.html">Order Cakes</a></li>
+            <li><a href="custom-cakes.html">Custom Designer Cakes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Explore</h4>
+          <ul class="footer-links">
+            <li><a href="gallery.html">Our Work Portfolio</a></li>
+            <li><a href="offers.html">Special Offers</a></li>
+            <li><a href="reviews.html">Customer Reviews</a></li>
+            <li><a href="contact.html">Store Location</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Visit Us</h4>
+          <p style="font-size: 0.92rem;">Shop No. 109, Austin Plaza, Mhatoba Chowk, Chhatrapati Chowk Road, Kaspate Wasti, Wakad, Pune, 411057</p>
+          <p style="font-size: 0.92rem; color: var(--gold-200);">Phone: +91 90220 40850</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 7th Heaven Wakad - The Cake Shop. All rights reserved.</div>
+        <div><a href="admin.html" class="owner-shortcut-hint" title="Owner Login (Passcode: WakadCake2026)">🔐 Owner Login Portal</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/whatsapp.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    let activeFilter = 'all';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderOrderCategories();
+      renderProducts();
+      if (window.Store) {
+        window.Store.on('products-changed', renderProducts);
+        window.Store.on('categories-changed', renderOrderCategories);
+      }
+    });
+
+    function renderOrderCategories() {
+      const container = document.getElementById('order-cat-tabs');
+      if (!container || !window.Store) return;
+      const categories = window.Store.getCategories();
+      let html = `<button class="filter-btn ${activeFilter === 'all' ? 'active' : ''}" onclick="filterOrderProducts('all', this)">All Treats</button>`;
+      categories.forEach(c => {
+        html += `<button class="filter-btn ${activeFilter === (c.slug || c.id) ? 'active' : ''}" onclick="filterOrderProducts('${c.slug || c.id}', this)">${c.name}</button>`;
+      });
+      container.innerHTML = html;
+    }
+
+    function filterOrderProducts(cat, btnEl) {
+      activeFilter = cat;
+      document.querySelectorAll('#order-cat-tabs .filter-btn').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+      renderProducts();
+    }
+
+    function renderProducts() {
+      const grid = document.getElementById('order-products-grid');
+      if (!grid || !window.Store) return;
+
+      let items = window.Store.getProducts();
+      if (activeFilter !== 'all') {
+        items = items.filter(p => p.category === activeFilter);
+      }
+
+      grid.innerHTML = items.map(p => `
+        <div class="product-card reveal">
+          <div class="product-img-wrap">
+            <div class="product-badge-wrap">
+              ${p.isBestseller ? '<span class="badge-tag badge-bestseller">★ Bestseller</span>' : ''}
+              <span class="badge-tag badge-veg"><span class="veg-icon"></span> 100% Veg</span>
+            </div>
+            <img src="${p.imageUrl}" alt="${p.name}" class="product-img" loading="lazy" onerror="this.src='assets/images/hero_cake.jpg'">
+          </div>
+          <div class="product-body">
+            <div class="product-category">${p.category}</div>
+            <h3 class="product-title">${p.name}</h3>
+            <p class="product-desc">${p.description}</p>
+            <div class="product-footer">
+              <div class="product-price-box">
+                <span class="price-label">Price starts</span>
+                <span class="product-price">₹${p.basePrice}</span>
+              </div>
+              <div class="product-actions">
+                <button class="btn btn-whatsapp btn-card-order" onclick="WhatsAppService.openOrderModal(Store.getProductById('${p.id}'))">
+                  <span>Order on WhatsApp</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      if (window.initScrollAnimations) {
+        initScrollAnimations();
+      }
+    }
+  </script>
+</body>
+</html>
